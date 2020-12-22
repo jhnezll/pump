@@ -19,7 +19,7 @@ const SignIn = () => {
         toggleLoading(true)
 
         fb.auth().signInWithEmailAndPassword(email, password)
-            .then(() => router.push('/private-page'))
+            .then(() => router.push('/dashboard'))
             .catch((error) => {
                 setError(error.message)
                 toggleLoading(false)
@@ -45,9 +45,6 @@ const SignIn = () => {
                                 disabled={loading} loading={loading}>Log in</Button>
                     </div>
                 </form>
-            </div>
-            <div className="text-sm text-center mt-4">
-                🛠 Customize this page at <span className="inlineCode">/pages/auth/signin.tsx</span>
             </div>
         </div>
     </div>

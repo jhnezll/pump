@@ -13,7 +13,7 @@ const SignUp = () => {
         event.preventDefault()
         if (event.target.password.value === event.target["confirm-password"].value) {
             fb.auth().createUserWithEmailAndPassword(event.target.email.value, event.target.password.value)
-                .then(() => router.push('/private-page'))
+                .then(() => router.push('/dashboard'))
         } else {
             setError("Passwords must match.")
         }
@@ -33,9 +33,6 @@ const SignUp = () => {
                         <Button variant="filled" sizes="lg" color="primary" type="submit">Create account</Button>
                     </div>
                 </form>
-            </div>
-            <div className="text-sm text-center mt-4">
-                🛠 Customize this page at <span className="inlineCode">/pages/auth/signup.tsx</span>
             </div>
         </div>
     </div>

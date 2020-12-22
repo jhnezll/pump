@@ -1,8 +1,20 @@
 import PageLayout from "../components/PageLayout";
 import Button from "../components/forms/Button";
-import React from "react";
+import React, {useContext} from "react";
+import SessionContext from "../util/SessionContext";
+import fb from "../util/firebase-config";
+import {useRouter} from "next/router";
+
 
 export default function Home() {
+    const {isAuthenticated} = useContext(SessionContext)
+    const router = useRouter()
+
+    if (isAuthenticated) {
+        router.push("/dashboard")
+    } else {
+        console.log("User is not logged in.")
+    }
 
     return (
         <PageLayout title="Welcome to Pump!">
