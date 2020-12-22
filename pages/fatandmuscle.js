@@ -1,15 +1,20 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import TextInput from "../components/forms/TextInput";
 import Button from "../components/forms/Button";
+import SessionContext from "../util/SessionContext";
+import PageLayout from "../components/PageLayout";
 
 export default function FatAndMuscle() {
+
+    const {userProfile} = useContext(SessionContext)
+
     const [data, setData] = useState({
         prevWeight: "",
         prevBF: "",
         currWeight: "",
         currBF: "",
-        fatLost: "",
-        muscleGained: ""
+        fatLost: 0,
+        muscleGained: 0
     })
 
     function handleSubmit(event) {
@@ -32,57 +37,58 @@ export default function FatAndMuscle() {
             fatLost: fatLost,
             muscleGained: muscleGained
         })
-
     }
 
     return(
-        <div className="flex justify-center items-center h-screen">
-            <div>
-                <div className="w-full text-center rounded-lg border border-gray-200 p-8">
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                        <h1 className="font-bold text-2xl">🏋 Fat Loss and Muscle Gain</h1>
+        <PageLayout privateRoute title="Fat and Muscle Calculator">
+            <div className="flex justify-center items-center h-screen">
+                <div>
+                    <div className="w-full text-center rounded-lg border border-gray-200 p-8">
+                        <form onSubmit={handleSubmit} className="space-y-4">
+                            <h1 className="font-bold text-2xl">🏋 Fat Loss and Muscle Gain</h1>
 
-                        {/*Previous*/}
-                        <TextInput label="Previous Weight (lbs)" id="previous-weight" type="number" required
-                            onChange={event => setData({
-                                ...data,
-                                prevWeight: event.target.value
-                            })} value={data.prevWeight}
-                        />
-                        <TextInput label="Previous Body Fat Percentage" id="previous-bf" type="number" required
-                            onChange={event => setData({
-                                ...data,
-                                prevBF: event.target.value
-                            })} value={data.prevBF}
-                        />
+                            {/*Previous*/}
+                            <TextInput label="Previous Weight (lbs)" id="previous-weight" type="number" required
+                                onChange={event => setData({
+                                    ...data,
+                                    prevWeight: event.target.value
+                                })} value={data.prevWeight}
+                            />
+                            <TextInput label="Previous Body Fat Percentage" id="previous-bf" type="number" required
+                                onChange={event => setData({
+                                    ...data,
+                                    prevBF: event.target.value
+                                })} value={data.prevBF}
+                            />
 
-                        {/*Current*/}
-                        <TextInput label="Current Weight (lbs)" id="current-weight" type="number" required
-                            onChange={event => setData({
-                                ...data,
-                                currWeight: event.target.value
-                            })} value={data.currWeight}
-                        />
-                        <TextInput label="Current Body Fat Percentage" id="current-bf" type="number" required
-                            onChange={event => setData({
-                                ...data,
-                                currBF: event.target.value
-                            })} value={data.currBF}
-                        />
+                            {/*Current*/}
+                            <TextInput label="Current Weight (lbs)" id="current-weight" type="number" required
+                                onChange={event => setData({
+                                    ...data,
+                                    currWeight: event.target.value
+                                })} value={data.currWeight}
+                            />
+                            <TextInput label="Current Body Fat Percentage" id="current-bf" type="number" required
+                                onChange={event => setData({
+                                    ...data,
+                                    currBF: event.target.value
+                                })} value={data.currBF}
+                            />
 
-                        {/*Data*/}
-                        <div className="text-right space-y-2">
-                            <h1>Fat lost: {data.fatLost.toFixed(2)} lbs</h1>
-                            <h1>️Muscle Gained: {data.muscleGained.toFixed(2)} lbs</h1>
-                        </div>
+                            {/*Data*/}
+                            <div className="text-right space-y-2">
+                                <h1>Fat lost: {data.fatLost.toFixed(2)} lbs</h1>
+                                <h1>️Muscle Gained: {data.muscleGained.toFixed(2)} lbs</h1>
+                            </div>
 
-                        {/*Bottom of Forum*/}
-                        <div className="text-right pt-4">
-                            <Button sizes="lg" variant="filled" type="submit">Submit</Button>
-                        </div>
-                    </form>
+                            {/*Bottom of Forum*/}
+                            <div className="text-right pt-4">
+                                <Button sizes="lg" variant="filled" type="submit">Submit</Button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </PageLayout>
     )
 }
