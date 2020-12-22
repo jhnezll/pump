@@ -2,7 +2,6 @@ import PageLayout from "../components/PageLayout";
 import Button from "../components/forms/Button";
 import React, {useContext} from "react";
 import SessionContext from "../util/SessionContext";
-import fb from "../util/firebase-config";
 import {useRouter} from "next/router";
 
 
@@ -22,8 +21,8 @@ export default function Home() {
                 <div className="text-center space-y-4">
                     <h1 className="text-2xl">You must login in order to keep track of your stats.</h1>
                     <div className="flex justify-center space-x-4">
-                        <Button sizes="lg" variant="light" type="submit">Login</Button>
-                        <Button sizes="lg" variant="filled" type="submit">Sign Up</Button>
+                        <Button sizes="lg" variant="light" type="submit" onClick={() => router.push("/auth/signin")}>Log in</Button>
+                        <Button sizes="lg" variant="filled" type="submit" onClick={() => router.push("/auth/signup")}>Sign Up</Button>
                     </div>
                 </div>
             </div>
