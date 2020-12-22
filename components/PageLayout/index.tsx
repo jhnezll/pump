@@ -50,11 +50,17 @@ const PageLayout: React.FC<Props> = ({children, privateRoute, title, redirectPat
                     💪 Pump
                 </a>
                 <div className="items-center">
-                    {isAuthenticated ? <Button sizes="md" variant="filled" onClick={signOut}>Sign out</Button> :
+                    {isAuthenticated ?
+                        <div className="space-x-2">
+                            <Button sizes="md" variant="light" onClick={() => router.push("/add")}>Add Measurement</Button>
+                            <Button sizes="md" variant="light" onClick={() => router.push("/basestats")}>Adjust Base Stats</Button>
+                            <Button sizes="md" variant="filled" onClick={signOut}>Sign out</Button>
+                        </div>
+                        :
                         <span className="space-x-2">
-                    <Button onClick={() => router.push('/auth/signin')} sizes="md" variant="light">Log in</Button>
-                    <Button onClick={() => router.push('/auth/signup')} sizes="md" variant="filled">Sign up</Button>
-                </span>}
+                            <Button onClick={() => router.push('/auth/signin')} sizes="md" variant="light">Log in</Button>
+                            <Button onClick={() => router.push('/auth/signup')} sizes="md" variant="filled">Sign up</Button>
+                        </span>}
                 </div>
 
             </div>
