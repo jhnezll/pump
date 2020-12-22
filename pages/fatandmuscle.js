@@ -3,10 +3,12 @@ import TextInput from "../components/forms/TextInput";
 import Button from "../components/forms/Button";
 import SessionContext from "../util/SessionContext";
 import PageLayout from "../components/PageLayout";
+import {useRouter} from "next/router";
 
 export default function FatAndMuscle() {
 
     const {userProfile} = useContext(SessionContext)
+    const router = useRouter()
 
     const [data, setData] = useState({
         prevWeight: "",
@@ -82,7 +84,8 @@ export default function FatAndMuscle() {
                             </div>
 
                             {/*Bottom of Forum*/}
-                            <div className="text-right pt-4">
+                            <div className="text-right pt-4 space-x-2">
+                                <Button sizes="lg" variant="light" onClick={() => router.push("/dashboard")}>Back</Button>
                                 <Button sizes="lg" variant="filled" type="submit">Submit</Button>
                             </div>
                         </form>
