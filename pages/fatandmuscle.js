@@ -4,11 +4,13 @@ import Button from "../components/forms/Button";
 import SessionContext from "../util/SessionContext";
 import PageLayout from "../components/PageLayout";
 import {useRouter} from "next/router";
+import fb from "../util/firebase-config";
 
 export default function FatAndMuscle() {
 
-    const {userProfile} = useContext(SessionContext)
     const router = useRouter()
+
+    const {userProfile} = useContext(SessionContext)
 
     const [data, setData] = useState({
         prevWeight: "",
@@ -38,6 +40,18 @@ export default function FatAndMuscle() {
             ...data,
             fatLost: fatLost,
             muscleGained: muscleGained
+        })
+
+        sendToFB()
+    }
+
+    function sendToFB() {
+        fb.firestore().collection("users").doc(userProfile.uid).collection("measurements").doc("fatandmuscle").set({
+            date: new Date(),
+            weight: data.currWeight,
+            bfp: data.currBF,
+            fatLost: data.fatLost,
+            muscleGained: data.muscleGained
         })
     }
 
