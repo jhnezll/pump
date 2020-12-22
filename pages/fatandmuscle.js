@@ -41,19 +41,15 @@ export default function FatAndMuscle() {
             fatLost: fatLost,
             muscleGained: muscleGained
         })
-
-        sendToFB()
     }
 
-    function sendToFB() {
-        fb.firestore().collection("users").doc(userProfile.uid).collection("measurements").doc("fatandmuscle").set({
-            date: new Date(),
-            weight: data.currWeight,
-            bfp: data.currBF,
-            fatLost: data.fatLost,
-            muscleGained: data.muscleGained
-        })
-    }
+    fb.firestore().collection("users").doc(userProfile.uid).collection("measurements").doc("fatandmuscle").set({
+        date: new Date(),
+        weight: data.currWeight,
+        bfp: data.currBF,
+        fatLost: data.fatLost,
+        muscleGained: data.muscleGained
+    })
 
     return(
         <PageLayout privateRoute title="Fat and Muscle Calculator">
