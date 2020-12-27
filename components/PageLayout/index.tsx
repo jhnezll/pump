@@ -53,6 +53,7 @@ const PageLayout: React.FC<Props> = ({children, privateRoute, title, redirectPat
                     {isAuthenticated ?
                         <div className="space-x-2">
                             <Button sizes="md" variant="light" onClick={() => router.push("/add")}>Add Measurement</Button>
+                            <Button sizes="md" variant="light" onClick={() => router.push("/calculator")}>Calculators</Button>
                             <Button sizes="md" variant="light" onClick={() => router.push("/basestats")}>Adjust Base Stats</Button>
                             <Button sizes="md" variant="filled" onClick={signOut}>Sign out</Button>
                         </div>

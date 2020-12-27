@@ -5,6 +5,7 @@ import SessionContext from "../util/SessionContext";
 import PageLayout from "../components/PageLayout";
 import {useRouter} from "next/router";
 import fb from "../util/firebase-config";
+import SelectInput from "../components/SelectInput";
 
 export default function Add() {
 
@@ -32,25 +33,25 @@ export default function Add() {
     }
 
     return(
-        <PageLayout privateRoute title="Measurements">
+        <PageLayout privateRoute title="Base Stats">
             <div className="flex justify-center items-center h-screen">
                 <div>
-                    <div className="w-full text-center rounded-lg border border-gray-200 p-8">
+                    <div className="text-center rounded-lg border border-gray-200 p-8 w-full md:w-96">
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <h1 className="font-bold text-2xl md:text-3xl">🏋 Input Measurements Below</h1>
 
                             {/*Data Input*/}
                             <TextInput label="Weight (lbs)" id="weight" type="number" required
-                                onChange={event => setData({
-                                    ...data,
-                                    weight: event.target.value
-                                })} value={data.weight}
+                                       onChange={event => setData({
+                                           ...data,
+                                           weight: event.target.value
+                                       })} value={data.weight}
                             />
                             <TextInput label="Body Fat Percentage" id="bfp" type="number" required
-                                onChange={event => setData({
-                                    ...data,
-                                    bfp: event.target.value
-                                })} value={data.bfp}
+                                       onChange={event => setData({
+                                           ...data,
+                                           bfp: event.target.value
+                                       })} value={data.bfp}
                             />
 
                             {/*Bottom of Forum*/}
@@ -65,3 +66,4 @@ export default function Add() {
         </PageLayout>
     )
 }
+
