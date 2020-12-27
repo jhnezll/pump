@@ -1,9 +1,10 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import PageLayout from "../../components/PageLayout";
 import TextInput from "../../components/forms/TextInput";
 import Button from "../../components/forms/Button";
 import {useRouter} from "next/router";
 import SelectInput from "../../components/SelectInput";
+import fb from "../../util/firebase-config";
 
 export default function Protein() {
 
